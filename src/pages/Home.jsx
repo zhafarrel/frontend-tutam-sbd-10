@@ -13,7 +13,7 @@ function Home() {
 
   const handleDelete = async (id) => {
     if (window.confirm("Hapus barang ini?")) {
-      await fetch(`http://localhost:5000/api/items/${id}`, { method: 'DELETE' });
+      await fetch(`backend-tutam-10-sbd-six.vercel.app/api/items/${id}`, { method: 'DELETE' });
       setItems(items.filter(i => i.id !== id));
     }
   };
