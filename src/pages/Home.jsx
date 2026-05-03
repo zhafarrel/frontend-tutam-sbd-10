@@ -6,7 +6,7 @@ function Home() {
   const [filter, setFilter] = useState('semua');
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/items')
+    fetch('backend-tutam-10-sbd-six.vercel.app/api/items')
       .then(res => res.json())
       .then(data => setItems(data));
   }, []);
