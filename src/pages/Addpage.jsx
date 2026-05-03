@@ -13,12 +13,22 @@ function AddPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch('https://backend-tutam-10-sbd-six.vercel.app/api/items', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    });
-    navigate('/');
+    try {
+      const response = await fetch('https://backend-tutam-10-sbd-six.vercel.app/api/items', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      
+      if (response.ok) {
+        navigate('/');
+      } else {
+        alert("Gagal menyimpan data ke server!");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Terjadi kesalahan jaringan!");
+    }
   };
 
   return (
@@ -29,7 +39,8 @@ function AddPage() {
         <input className="input-field" type="text" name="kategori" placeholder="Kategori (misal: Alat Musik)" onChange={handleChange} required />
         <input className="input-field" type="number" name="jumlah" placeholder="Jumlah Stok" onChange={handleChange} required />
         <textarea className="input-field" name="deskripsi" placeholder="Deskripsi Barang" onChange={handleChange} rows="3" />
-        <input className="input-field" type="url" name="image_url" placeholder="Link URL Gambar" onChange={handleChange} required />
+        
+        <input className="input-field" type="text" name="image_url" placeholder="Link URL Gambar" onChange={handleChange} required />
         
         <div className="btn-group">
           <button type="submit" className="btn-save">Simpan Barang</button>
@@ -40,4 +51,4 @@ function AddPage() {
   );
 }
 
-export default AddPage; 
+export default AddPage;
