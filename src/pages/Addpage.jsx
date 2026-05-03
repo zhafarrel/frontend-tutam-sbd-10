@@ -13,7 +13,7 @@ function AddPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch('backend-tutam-10-sbd-six.vercel.app/api/items', {
+    await fetch('https://backend-tutam-10-sbd-six.vercel.app/api/items', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
@@ -40,4 +40,4 @@ function AddPage() {
   );
 }
 
-export default AddPage;
+export default AddPage; 

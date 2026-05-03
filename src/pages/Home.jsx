@@ -6,14 +6,14 @@ function Home() {
   const [filter, setFilter] = useState('semua');
 
   useEffect(() => {
-    fetch('backend-tutam-10-sbd-six.vercel.app/api/items')
+    fetch('https://backend-tutam-10-sbd-six.vercel.app/api/items')
       .then(res => res.json())
       .then(data => setItems(data));
   }, []);
 
   const handleDelete = async (id) => {
     if (window.confirm("Hapus barang ini?")) {
-      await fetch(`backend-tutam-10-sbd-six.vercel.app/api/items/${id}`, { method: 'DELETE' });
+      await fetch(`https://backend-tutam-10-sbd-six.vercel.app/api/items/${id}`, { method: 'DELETE' });
       setItems(items.filter(i => i.id !== id));
     }
   };
